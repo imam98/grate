@@ -136,6 +136,8 @@ func (d *Document) openXML(name string) (*xml.Decoder, io.Closer, error) {
 	if grate.Debug {
 		log.Println("    openXML", name)
 	}
+
+	name = strings.ReplaceAll(name, "\\", "/")
 	for _, zf := range d.r.File {
 		if zf.Name == name {
 			zfr, err := zf.Open()

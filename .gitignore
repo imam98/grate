@@ -1,5 +1,6 @@
 cmd/grate2tsv/results
 testdata
+.idea
 
 *.pprof
 *.pdf
