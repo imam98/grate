@@ -42,7 +42,7 @@ func (s *Sheet) Resize(rows, cols int) {
 	s.NumRows = rows
 	s.NumCols = cols
 
-	for rows >= len(s.Rows) {
+	for rows > len(s.Rows) {
 		s.Rows = append(s.Rows, make([]Cell, cols))
 	}
 }
@@ -173,7 +173,9 @@ func (s *Sheet) Formats() []string {
 
 // Scan extracts values from the current record into the provided arguments
 // Arguments must be pointers to one of 5 supported types:
-//     bool, int64, float64, string, or time.Time
+//
+//	bool, int64, float64, string, or time.Time
+//
 // If invalid, returns ErrInvalidScanType
 func (s *Sheet) Scan(args ...interface{}) error {
 	row := s.Rows[s.CurRow-1]
