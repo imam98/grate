@@ -13,6 +13,8 @@ func Open(filename string) (*Document, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer f.Close()
+
 	err = d.load(f)
 	if err != nil {
 		return nil, err
